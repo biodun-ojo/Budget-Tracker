@@ -37,43 +37,58 @@ Exceptions:
 
 Handle errors gracefully, such as invalid input types (e.g., entering a string when a number is expected).
 """
-category = input('\n Enter the expense category (e.g.  grocries, rent): ')
-expense = float(input('enter the expense amount: '))
+
+Category = None
+Expense = 0
+Income = 0
+
 
 thedict = {
-    'bobo':'hello',
-    'me':'yins'
+    'bobo':10,
+    'me':100
 }
-
-thedict.update({category: expense})
-
-print(thedict)
 
 
 def addIncome():
-    income = float(input('enter the amount of income: '))
-    print(f'income of {income} added successfully!')
+    global Income
     
+    Income += float(input('enter the amount of income: '))
+    print(f'income of {Income} added successfully!')
+
     test()
+
     
 def addExpense():
-    category = input('Enter the expense category (e.g.  grocries, rent): ')
-    expense = float(input('enter the expense amount: '))
-    print(f'expense of {expense} added to {category}')
+    global Category
+    global Expense
+    
+    Category = input('Enter the expense category (e.g.  grocries, rent): ')
+    Expense = float(input('enter the expense amount: '))
+    print(f'expense of {Expense} added to {Category}')
+    
+    thedict.update({Category: Expense})
+    print(thedict)
     
     test()
     
 def summary():
     print('\n\n ---- budget summary -----')
-    print('Total income: ?')
-    print(f'total expenses: {expense}')
-    print('\nExpense by category')
+    print(f'Total income: {Income}')
+    print(f'total expenses: {Expense}')
+    print('\n--Expense by category--')
     for x, y in thedict.items():
         print(f'{x}: {y}')
+        
+    spent = sum(thedict.values())
     
+    dif = spent - Income
+    
+    if spent >  Income:   
+        print(f'you are spending {dif} over the budget')
+    else:
+        print()
+            
     test()
-    
-    
     
 
 def test():
