@@ -37,14 +37,25 @@ Exceptions:
 
 Handle errors gracefully, such as invalid input types (e.g., entering a string when a number is expected).
 """
+category = input('\n Enter the expense category (e.g.  grocries, rent): ')
+expense = float(input('enter the expense amount: '))
+
+thedict = {
+    'bobo':'hello',
+    'me':'yins'
+}
+
+thedict.update({category: expense})
+
+print(thedict)
+
 
 def addIncome():
     income = float(input('enter the amount of income: '))
     print(f'income of {income} added successfully!')
     
     test()
-
-
+    
 def addExpense():
     category = input('Enter the expense category (e.g.  grocries, rent): ')
     expense = float(input('enter the expense amount: '))
@@ -54,10 +65,11 @@ def addExpense():
     
 def summary():
     print('\n\n ---- budget summary -----')
-    print()
-    print()
-    print()
-    print()
+    print('Total income: ?')
+    print(f'total expenses: {expense}')
+    print('\nExpense by category')
+    for x, y in thedict.items():
+        print(f'{x}: {y}')
     
     test()
     
